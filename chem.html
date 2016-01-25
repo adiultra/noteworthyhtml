@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Data</title>
+  <meta charset="utf-8">
+
+  <!-- Katex -->
+  <style>
+    .markdown-katex-preview {
+      overflow: hidden;
+      font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      word-wrap: break-word;
+      color: #737373;
+      background-color: #fcfcf8;
+      margin: 10px 13px 10px 13px;
+      padding: 25px;
+    }
+
+    .markdown-katex-preview > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    .markdown-katex-preview > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    .markdown-katex-preview a:not([href]) {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .markdown-katex-preview a {
+      color: #08c;
+      text-decoration: none;
+    }
+
+    .markdown-katex-preview a:hover {
+      color: #0050a3;
+      text-decoration: none;
+    }
+
+    .markdown-katex-preview a img {
+      border: none;
+    }
+
+    .markdown-katex-preview .absent {
+      color: #c00;
+    }
+
+    .markdown-katex-preview .anchor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      padding-right: 6px;
+      padding-left: 30px;
+      margin-left: -30px;
+    }
+
+    .markdown-katex-preview .anchor:focus {
+      outline: none;
+    }
+
+    .markdown-katex-preview h1,
+    .markdown-katex-preview h2,
+    .markdown-katex-preview h3,
+    .markdown-katex-preview h4,
+    .markdown-katex-preview h5,
+    .markdown-katex-preview h6 {
+      position: relative;
+      margin-top: 1em;
+      margin-bottom: 16px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .markdown-katex-preview h1 .octicon-link,
+    .markdown-katex-preview h2 .octicon-link,
+    .markdown-katex-preview h3 .octicon-link,
+    .markdown-katex-preview h4 .octicon-link,
+    .markdown-katex-preview h5 .octicon-link,
+    .markdown-katex-preview h6 .octicon-link {
+      display: none;
+      color: #000;
+      vertical-align: middle;
+    }
+
+    .markdown-katex-preview h1:hover .anchor,
+    .markdown-katex-preview h2:hover .anchor,
+    .markdown-katex-preview h3:hover .anchor,
+    .markdown-katex-preview h4:hover .anchor,
+    .markdown-katex-preview h5:hover .anchor,
+    .markdown-katex-preview h6:hover .anchor {
+      padding-left: 8px;
+      margin-left: -30px;
+      text-decoration: none;
+    }
+
+    .markdown-katex-preview h1:hover .anchor .octicon-link,
+    .markdown-katex-preview h2:hover .anchor .octicon-link,
+    .markdown-katex-preview h3:hover .anchor .octicon-link,
+    .markdown-katex-preview h4:hover .anchor .octicon-link,
+    .markdown-katex-preview h5:hover .anchor .octicon-link,
+    .markdown-katex-preview h6:hover .anchor .octicon-link {
+      display: inline-block;
+    }
+
+    .markdown-katex-preview h1 tt,
+    .markdown-katex-preview h2 tt,
+    .markdown-katex-preview h3 tt,
+    .markdown-katex-preview h4 tt,
+    .markdown-katex-preview h5 tt,
+    .markdown-katex-preview h6 tt,
+    .markdown-katex-preview h1 code,
+    .markdown-katex-preview h2 code,
+    .markdown-katex-preview h3 code,
+    .markdown-katex-preview h4 code,
+    .markdown-katex-preview h5 code,
+    .markdown-katex-preview h6 code {
+      font-size: inherit;
+    }
+
+    .markdown-katex-preview h1 {
+      padding-bottom: 0.3em;
+      font-size: 2.25em;
+      line-height: 1.2;
+      border-bottom: 1px solid #eee;
+    }
+
+    .markdown-katex-preview h1 .anchor {
+      line-height: 1;
+    }
+
+    .markdown-katex-preview h2 {
+      padding-bottom: 0.3em;
+      font-size: 1.75em;
+      line-height: 1.225;
+      border-bottom: 1px solid #eee;
+    }
+
+    .markdown-katex-preview h2 .anchor {
+      line-height: 1;
+    }
+
+    .markdown-katex-preview h3 {
+      font-size: 1.5em;
+      line-height: 1.43;
+    }
+
+    .markdown-katex-preview h3 .anchor {
+      line-height: 1.2;
+    }
+
+    .markdown-katex-preview h4 {
+      font-size: 1.25em;
+    }
+
+    .markdown-katex-preview h4 .anchor {
+      line-height: 1.2;
+    }
+
+    .markdown-katex-preview h5 {
+      font-size: 1em;
+    }
+
+    .markdown-katex-preview h5 .anchor {
+      line-height: 1.1;
+    }
+
+    .markdown-katex-preview h6 {
+      font-size: 1em;
+      color: #777;
+    }
+
+    .markdown-katex-preview h6 .anchor {
+      line-height: 1.1;
+    }
+
+    .markdown-katex-preview p,
+    .markdown-katex-preview blockquote,
+    .markdown-katex-preview ul,
+    .markdown-katex-preview ol,
+    .markdown-katex-preview dl,
+    .markdown-katex-preview table,
+    .markdown-katex-preview pre {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .markdown-katex-preview hr {
+      height: 4px;
+      padding: 0;
+      margin: 16px 0;
+      background-color: #e7e7e7;
+      border: 0 none;
+    }
+
+    .markdown-katex-preview ul,
+    .markdown-katex-preview ol {
+      padding-left: 2em;
+    }
+
+    .markdown-katex-preview ul.no-list,
+    .markdown-katex-preview ol.no-list {
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .markdown-katex-preview ul ul,
+    .markdown-katex-preview ul ol,
+    .markdown-katex-preview ol ol,
+    .markdown-katex-preview ol ul {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .markdown-katex-preview li > p {
+      margin-top: 16px;
+    }
+
+    .markdown-katex-preview dl {
+      padding: 0;
+    }
+
+    .markdown-katex-preview dl dt {
+      padding: 0;
+      margin-top: 16px;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .markdown-katex-preview dl dd {
+      padding: 0 16px;
+      margin-bottom: 16px;
+    }
+
+    .markdown-katex-preview blockquote {
+      padding: 0 15px;
+      color: #777;
+      border-left: 4px solid #ddd;
+      margin-left: 0;
+    }
+
+    .markdown-katex-preview blockquote >:first-child {
+      margin-top: 0;
+    }
+
+    .markdown-katex-preview blockquote >:last-child {
+      margin-bottom: 0;
+    }
+
+    .markdown-katex-preview table {
+      margin: 10px 0 15px 0;
+      border-collapse: collapse;
+    }
+
+    .markdown-katex-preview table th {
+      font-weight: bold;
+    }
+
+    .markdown-katex-preview table td,
+    .markdown-katex-preview table th {
+      border: 1px solid #ddd;
+      padding: 3px 10px;
+    }
+
+    .markdown-katex-preview table th {
+      padding: 5px 10px;
+    }
+
+    .markdown-katex-preview img {
+      max-width: 100%;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .markdown-katex-preview .emoji {
+      max-width: none;
+    }
+
+    .markdown-katex-preview span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    .markdown-katex-preview span.frame > span {
+      display: block;
+      float: left;
+      width: auto;
+      padding: 7px;
+      margin: 13px 0 0;
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+
+    .markdown-katex-preview span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    .markdown-katex-preview span.frame span span {
+      display: block;
+      padding: 5px 0 0;
+      clear: both;
+      color: #333;
+    }
+
+    .markdown-katex-preview span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    .markdown-katex-preview span.align-center > span {
+      display: block;
+      margin: 13px auto 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .markdown-katex-preview span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .markdown-katex-preview span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    .markdown-katex-preview span.align-right > span {
+      display: block;
+      margin: 13px 0 0;
+      overflow: hidden;
+      text-align: right;
+    }
+
+    .markdown-katex-preview span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    .markdown-katex-preview span.float-left {
+      display: block;
+      float: left;
+      margin-right: 13px;
+      overflow: hidden;
+    }
+
+    .markdown-katex-preview span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    .markdown-katex-preview span.float-right {
+      display: block;
+      float: right;
+      margin-left: 13px;
+      overflow: hidden;
+    }
+
+    .markdown-katex-preview span.float-right > span {
+      display: block;
+      margin: 13px auto 0;
+      overflow: hidden;
+      text-align: right;
+    }
+
+    .markdown-katex-preview code,
+    .markdown-katex-preview tt {
+      padding: 0;
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      margin: 0;
+      font-size: 85%;
+      background-color: rgba(0, 0, 0, 0.04);
+      border-radius: 3px;
+      color: #4d4d4c;
+    }
+
+    .markdown-katex-preview code:before,
+    .markdown-katex-preview tt:before,
+    .markdown-katex-preview code:after,
+    .markdown-katex-preview tt:after {
+      letter-spacing: -0.2em;
+      content: "\00a0";
+    }
+
+    .markdown-katex-preview code br,
+    .markdown-katex-preview tt br {
+      display: none;
+    }
+
+    .markdown-katex-preview del code {
+      text-decoration: inherit;
+    }
+
+    .markdown-katex-preview pre > code {
+      padding: 0;
+      margin: 0;
+      font-size: 100%;
+      word-break: normal;
+      white-space: pre;
+      background: transparent;
+      border: 0;
+    }
+
+    .markdown-katex-preview .highlight {
+      margin-bottom: 16px;
+    }
+
+    .markdown-katex-preview .highlight pre,
+    .markdown-katex-preview pre {
+      padding: 16px;
+      overflow: auto;
+      font-size: 85%;
+      line-height: 1.45;
+      background-color: #f7f7f7;
+      border-radius: 3px;
+    }
+
+    .markdown-katex-preview .highlight pre {
+      margin-bottom: 0;
+      word-break: normal;
+    }
+
+    .markdown-katex-preview pre {
+      word-wrap: normal;
+    }
+
+    .markdown-katex-preview pre code,
+    .markdown-katex-preview pre tt {
+      display: inline;
+      max-width: initial;
+      padding: 0;
+      margin: 0;
+      overflow: initial;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .markdown-katex-preview pre code:before,
+    .markdown-katex-preview pre tt:before,
+    .markdown-katex-preview pre code:after,
+    .markdown-katex-preview pre tt:after {
+      content: normal;
+    }
+
+    .markdown-katex-preview kbd {
+      display: inline-block;
+      padding: 3px 5px;
+      font-size: 11px;
+      line-height: 10px;
+      color: #555;
+      vertical-align: middle;
+      background-color: #fcfcfc;
+      border: solid 1px #ccc;
+      border-bottom-color: #bbb;
+      border-radius: 3px;
+      box-shadow: inset 0 -1px 0 #bbb;
+    }
+
+    .markdown-katex-preview .newpage {
+      page-break-before: always;
+    }
+
+    @media screen and (min-width: 914px) {
+      .markdown-katex-preview {
+        width: 854px;
+        margin: 10px auto;
+        overflow-y: scroll;
+        background: #fdfdfd;
+      }
+    }
+
+    @media print {
+      .markdown-katex-preview {
+        background: #fff;
+      }
+      .markdown-katex-preview h1,
+      .markdown-katex-preview h2,
+      .markdown-katex-preview h3,
+      .markdown-katex-preview h4,
+      .markdown-katex-preview h5,
+      .markdown-katex-preview h6 {
+        color: #222;
+      }
+      .markdown-katex-preview blockquote {
+        color: #777;
+      }
+      .markdown-katex-preview table,
+      .markdown-katex-preview pre {
+        page-break-inside: avoid;
+      }
+      .markdown-katex-preview pre {
+        border: 2px solid #f6f6f6;
+      }
+      .markdown-katex-preview code {
+        font-weight: 500;
+      }
+      .markdown-katex-preview img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  </style>
+
+  <!-- Code style -->
+  <style>
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    /* Tomorrow Comment */
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #8e908c;
+    }
+    /* Tomorrow Red */
+
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag,
+    .hljs-name,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-regexp,
+    .hljs-deletion {
+      color: #c82829;
+    }
+    /* Tomorrow Orange */
+
+    .hljs-number,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-params,
+    .hljs-meta,
+    .hljs-link {
+      color: #f5871f;
+    }
+    /* Tomorrow Yellow */
+
+    .hljs-attribute {
+      color: #eab700;
+    }
+    /* Tomorrow Green */
+
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-addition {
+      color: #718c00;
+    }
+    /* Tomorrow Blue */
+
+    .hljs-title,
+    .hljs-section {
+      color: #4271ae;
+    }
+    /* Tomorrow Purple */
+
+    .hljs-keyword,
+    .hljs-selector-tag {
+      color: #8959a8;
+    }
+
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      background: white;
+      color: #4d4d4c;
+      padding: 0.5em;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+
+  <!-- General style -->
+  <link rel="stylesheet" href="style.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+</head>
+
+<body>
+  <h1 id="buffer-solution">Buffer Solution</h1>
+  <p>A <strong>buffer solution</strong> is an aqueous solution consisting of a mixture of a weak acid and its conjugate base, or vice versa. Its pH changes very little when a small or moderate amount of strong acid or base is added to it and thus it is used
+    to prevent changes in the pH of a solution. Buffer solutions are used as a means of keeping pH at a nearly constant value in a wide variety of chemical applications.</p>
+  <p>Buffer solutions achieve their resistance to pH change because of the presence of an equilibrium between the acid <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H\!A</annotation></semantics></math></span>
+    <span
+    class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mord mspace negativethinspace"></span>
+      <span
+      class="mord mathit">A</span>
+        </span>
+        </span>
+        </span> and its conjugate base <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>A</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">A^-</annotation></semantics></math></span><span class="katex-html"
+        aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span>
+        <span
+        class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+          </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+          </span>
+          </span>
+          </span>
+          </span>
+          </span>.</p>
+  <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi><mspace width="0.22222em"></mspace><mo>&#x21CC;</mo><mspace width="0.22222em"></mspace><msup><mi>A</mi><mo>&#x2212;</mo></msup><mo>+</mo><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H\!A \: \rightleftharpoons \: A^- + H^+</annotation></semantics></math></span>
+    <span
+    class="katex-html" aria-hidden="true"><span class="strut" style="height:0.821331em;"></span><span class="strut bottom" style="height:0.904661em;vertical-align:-0.08333em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+      <span
+      class="mord mspace negativethinspace"></span><span class="mord mathit">A</span><span class="mord mspace mediumspace"></span><span class="mrel">&#x21CC;</span><span class="mord mspace mediumspace"></span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+        <span
+        class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+          </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+          </span>
+          </span><span class="mbin">+</span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+          <span
+          class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+            </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+            </span>
+            </span>
+            </span>
+            </span>
+            </span>
+            </span>
+  </p>
+  <h2 id="working">Working</h2>
+  <p>If we mix a weak acid (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H\!A</annotation></semantics></math></span><span class="katex-html"
+    aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+    <span
+    class="mord mspace negativethinspace"></span><span class="mord mathit">A</span></span>
+      </span>
+      </span>) with its conjugate base (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>A</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">A^-</annotation></semantics></math></span><span class="katex-html"
+      aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span>
+      <span
+      class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+        </span>
+        </span>
+        </span>
+        </span>
+        </span>), both the acid and base components remain present in the solution. This is because they do not undergo any reactions that significantly alter their concentrations. The acid and conjugate base may react with one another, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi><mo>+</mo><msup><mi>A</mi><mo>&#x2212;</mo></msup><mspace width="0.22222em"></mspace><mo>&#x2192;</mo><mspace width="0.22222em"></mspace><msup><mi>A</mi><mo>&#x2212;</mo></msup><mo>+</mo><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H\!A + A^-\: \rightarrow \:A^- + H\!A</annotation></semantics></math></span>
+        <span
+        class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.854661em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+          <span
+          class="mord mspace negativethinspace"></span><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+            <span
+            class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+              </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+              </span>
+              </span><span class="mord mspace mediumspace"></span><span class="mrel">&#x2192;</span><span class="mord mspace mediumspace"></span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+              <span
+              class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                </span>
+                </span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mord mspace negativethinspace"></span><span class="mord mathit">A</span></span>
+                </span>
+                </span>, but when they do so, they simply trade places and the concentrations <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[H\!A]</annotation></semantics></math></span>
+                <span
+                class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                  <span
+                  class="mord mspace negativethinspace"></span><span class="mord mathit">A</span><span class="mclose">]</span></span>
+                    </span>
+                    </span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msup><mi>A</mi><mo>&#x2212;</mo></msup><mo>]</mo></mrow><annotation encoding="application/x-tex">[A^-]</annotation></semantics></math></span>
+                    <span
+                    class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">[</span><span class="mord"><span class="mord mathit">A</span>
+                      <span
+                      class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                        </span>
+                        </span><span class="mclose">]</span></span>
+                        </span>
+                        </span> do not change. In addition, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H\!A</annotation></semantics></math></span>
+                        <span
+                        class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                          <span
+                          class="mord mspace negativethinspace"></span><span class="mord mathit">A</span></span>
+                            </span>
+                            </span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>A</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">A^-</annotation></semantics></math></span><span class="katex-html"
+                            aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span>
+                            <span
+                            class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                              </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                              </span>
+                              </span>
+                              </span>
+                              </span>
+                              </span> only rarely react with water. By definition, a weak acid is one that only rarely dissociates in water (that is, only rarely will the acid lose its proton <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span>
+                              <span
+                              class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                                <span
+                                class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+                                  </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                                  </span>
+                                  </span>
+                                  </span>
+                                  </span>
+                                  </span> to water). Likewise, since the conjugate base <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>A</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">A^-</annotation></semantics></math></span>
+                                  <span
+                                  class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span>
+                                    <span
+                                    class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                                      </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                                      </span>
+                                      </span>
+                                      </span>
+                                      </span>
+                                      </span> is a weak base, it rarely steals a proton <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span>
+                                      <span
+                                      class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                                        <span
+                                        class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+                                          </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span> from water.</p>
+  <p>So, the weak acid and weak base remain in the solution with high concentrations since they only rarely react with the water. However, they are very likely to react with any added strong base or strong acid.</p>
+  <p><img src="http://chemcollective.org/assets/modules/activities/tutorials/buffers/images/Pict3buffer.gif" alt=""></p>
+  <p>If a strong base is added to a buffer, the weak acid will give up its <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span>
+    <span
+    class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+      <span
+      class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+        </span>
+        </span>
+        </span>
+        </span>
+        </span> in order to transform the base (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mspace width="-0.16667em"></mspace><msup><mi>H</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">O\!H^-</annotation></semantics></math></span>
+        <span
+        class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span>
+          <span
+          class="mord mspace negativethinspace"></span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+            <span
+            class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+              </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+              </span>
+              </span>
+              </span>
+              </span>
+              </span>) into water (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow><annotation encoding="application/x-tex">H_2O</annotation></semantics></math></span><span class="katex-html"
+              aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+              <span
+              class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.08125em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span>
+                </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                </span>
+                </span><span class="mord mathit" style="margin-right:0.02778em;">O</span></span>
+                </span>
+                </span>) and the conjugate base: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi><mo>+</mo><mi>O</mi><mspace width="-0.16667em"></mspace><msup><mi>H</mi><mo>&#x2212;</mo></msup><mo>&#x2192;</mo><msup><mi>A</mi><mo>&#x2212;</mo></msup><mo>+</mo><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow><annotation encoding="application/x-tex">H\!A + O\!H^- \rightarrow A^- + H_2O</annotation></semantics></math></span>
+                <span
+                class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.921331em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                  <span
+                  class="mord mspace negativethinspace"></span><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mspace negativethinspace"></span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                    <span
+                    class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                      </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                      </span>
+                      </span><span class="mrel">&#x2192;</span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+                      <span
+                      class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                        </span>
+                        </span><span class="mbin">+</span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.08125em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+                        <span
+                        class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span>
+                          </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                          </span>
+                          </span><span class="mord mathit" style="margin-right:0.02778em;">O</span></span>
+                          </span>
+                          </span>. Since the added <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mspace width="-0.16667em"></mspace><msup><mi>H</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">O\!H^-</annotation></semantics></math></span>
+                          <span
+                          class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span>
+                            <span
+                            class="mord mspace negativethinspace"></span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+                              <span
+                              class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                                </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                                </span>
+                                </span>
+                                </span>
+                                </span>
+                                </span> is consumed by this reaction, the pH will change only slightly.</p>
+  <p><img src="http://chemcollective.org/assets/modules/activities/tutorials/buffers/images/Pict5basebuffer.gif" alt=""></p>
+  <p>If a strong acid is added to a buffer, the weak base will react with the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span>
+    <span
+    class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+      <span
+      class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+        </span>
+        </span>
+        </span>
+        </span>
+        </span> from the strong acid to form the weak acid <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H\!A</annotation></semantics></math></span>
+        <span
+        class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+          <span
+          class="mord mspace negativethinspace"></span><span class="mord mathit">A</span></span>
+            </span>
+            </span>: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup><mo>+</mo><msup><mi>A</mi><mo>&#x2212;</mo></msup><mo>&#x2192;</mo><mi>H</mi><mspace width="-0.16667em"></mspace><mi>A</mi></mrow><annotation encoding="application/x-tex">H^+ + A^- \rightarrow H\!A</annotation></semantics></math></span>
+            <span
+            class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.854661em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+              <span
+              class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+                </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                </span>
+                </span><span class="mbin">+</span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+                <span
+                class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                  </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                  </span>
+                  </span><span class="mrel">&#x2192;</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mord mspace negativethinspace"></span><span class="mord mathit">A</span></span>
+                  </span>
+                  </span>. The <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span>
+                  <span
+                  class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>
+                    <span
+                    class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+                      </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                      </span>
+                      </span>
+                      </span>
+                      </span>
+                      </span> gets absorbed by the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>A</mi><mo>&#x2212;</mo></msup></mrow><annotation encoding="application/x-tex">A^-</annotation></semantics></math></span><span class="katex-html"
+                      aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span>
+                      <span
+                      class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">&#x2212;</span></span>
+                        </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                        </span>
+                        </span>
+                        </span>
+                        </span>
+                        </span> instead of reacting with water to form H3O+ (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>H</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">H^+</annotation></semantics></math></span>
+                        <span
+                        class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span>
+                          <span
+                          class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">+</span></span>
+                            </span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>), so the pH changes only slightly.</p>
+  <p><img src="http://chemcollective.org/assets/modules/activities/tutorials/buffers/images/Pict4acidbuffRev.gif" alt=""></p>
+</body>
+
+</html>
+
+</html>
